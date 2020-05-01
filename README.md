@@ -81,7 +81,7 @@ docker images
 ## パッケージング
 
 ```console
-git clone --depth=1 --branch=v19.03.5 https://github.com/docker/docker-ce
+git clone --depth=1 --branch=v19.03.8 https://github.com/docker/docker-ce
 cd docker-ce
 sed -i 's/alpine/arm32v6\/alpine/' components/packaging/deb/Makefile
 make DOCKER_BUILD_PKGS=raspbian-buster deb
@@ -91,19 +91,19 @@ pi0なら4時間後くらいに完了する．祈って待つ
 
 ```console
 find components/packaging/deb/debbuild/raspbian-buster/ -type f
-components/packaging/deb/debbuild/raspbian-buster/docker-ce_19.03.5~3-0~raspbian-buster_armhf.buildinfo
-components/packaging/deb/debbuild/raspbian-buster/docker-ce_19.03.5~3-0~raspbian-buster.dsc
-components/packaging/deb/debbuild/raspbian-buster/docker-ce_19.03.5~3-0~raspbian-buster_armhf.deb # これが欲しかったもの
-components/packaging/deb/debbuild/raspbian-buster/docker-ce_19.03.5~3-0~raspbian-buster.tar.gz
-components/packaging/deb/debbuild/raspbian-buster/docker-ce-cli_19.03.5~3-0~raspbian-buster_armhf.deb
-components/packaging/deb/debbuild/raspbian-buster/docker-ce_19.03.5~3-0~raspbian-buster_armhf.changes
+components/packaging/deb/debbuild/raspbian-buster/docker-ce_19.03.8~3-0~raspbian-buster_armhf.buildinfo
+components/packaging/deb/debbuild/raspbian-buster/docker-ce_19.03.8~3-0~raspbian-buster.dsc
+components/packaging/deb/debbuild/raspbian-buster/docker-ce_19.03.8~3-0~raspbian-buster_armhf.deb # これが欲しかったもの
+components/packaging/deb/debbuild/raspbian-buster/docker-ce_19.03.8~3-0~raspbian-buster.tar.gz
+components/packaging/deb/debbuild/raspbian-buster/docker-ce-cli_19.03.8~3-0~raspbian-buster_armhf.deb
+components/packaging/deb/debbuild/raspbian-buster/docker-ce_19.03.8~3-0~raspbian-buster_armhf.changes
 ```
 
 成果物を取り出しておく．
 
 ```console
 scp -r pi@pi0.local:docker-ce/components/packaging/deb/debbuild/raspbian-buster deb
-tar cvjf docker-ce-for-raspbian-buster-19.03.5.tar.bz2 deb
+tar cvjf docker-ce-for-raspbian-buster-19.03.8.tar.bz2 deb
 ```
 
 ## 動作確認
@@ -129,8 +129,8 @@ sudo reboot
 作成したパッケージを `apt` で
 
 ```bash
-sudo apt install -y ./deb/docker-ce-cli_19.03.5~3-0~raspbian-buster_armhf.deb --no-install-recommends
-sudo apt install -y ./deb/docker-ce_19.03.5~3-0~raspbian-buster_armhf.deb --no-install-recommends
+sudo apt install -y ./deb/docker-ce-cli_19.03.8~3-0~raspbian-buster_armhf.deb --no-install-recommends
+sudo apt install -y ./deb/docker-ce_19.03.8~3-0~raspbian-buster_armhf.deb --no-install-recommends
 ```
 
 ### 実行
